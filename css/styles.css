@@ -1,0 +1,763 @@
+
+/* ==========================================
+   VÉLORÉ - LUXURY FASHION BOUTIQUE
+   Diseño responsive para PC y celulares
+========================================== */
+
+/* VARIABLES */
+
+:root {
+    --black: #080808;
+    --dark: #111111;
+    --card: #151515;
+    --gold: #D4AF65;
+    --gold-light: #E8CC91;
+    --white: #F5F2EB;
+    --gray: #999999;
+    --transition: 0.4s ease;
+}
+
+/* CONFIGURACIÓN GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ==========================================
+   ENCABEZADO
+========================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(8, 8, 8, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(212, 175, 101, 0.2);
+}
+
+.navbar {
+    max-width: 1400px;
+    min-height: 85px;
+    margin: auto;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--gold);
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    letter-spacing: 8px;
+    color: var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cart-button {
+    padding: 12px 20px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.cart-button:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* ==========================================
+   PORTADA PRINCIPAL
+========================================== */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 150px 20px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url('https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=2000&q=85');
+
+    background-size: cover;
+    background-position: center 35%;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+    animation: heroEntrance 1.5s ease both;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 95px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero-content > p:not(.eyebrow) {
+    color: #dddddd;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.gold-button {
+    display: inline-block;
+    padding: 17px 35px;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.gold-button:hover {
+    background: transparent;
+    color: var(--gold);
+    box-shadow: 0 0 25px rgba(212, 175, 101, 0.2);
+    transform: translateY(-4px);
+}
+
+/* ==========================================
+   SECCIONES
+========================================== */
+
+.section {
+    width: 100%;
+    padding: 120px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-heading h2,
+.about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.section-heading > p:last-child {
+    color: var(--gray);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   FILTROS
+========================================== */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.filter-button {
+    padding: 12px 25px;
+    border: 1px solid #333333;
+    background: transparent;
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.filter-button:hover,
+.filter-button.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(212, 175, 101, 0.06);
+}
+
+/* ==========================================
+   CATÁLOGO DE PRODUCTOS
+========================================== */
+
+.product-grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 45px 28px;
+}
+
+.product-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid rgba(212, 175, 101, 0.12);
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 101, 0.65);
+}
+
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    overflow: hidden;
+    background: #202020;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.06);
+}
+
+.product-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    background: rgba(8, 8, 8, 0.88);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.product-info {
+    padding: 24px 22px;
+}
+
+.product-category {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.product-info h3 {
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    min-height: 42px;
+    color: var(--gray);
+    font-size: 11px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 17px;
+    border-top: 1px solid #292929;
+}
+
+.product-price {
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.add-cart-button {
+    padding: 11px 15px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.add-cart-button:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* ==========================================
+   SOBRE NOSOTROS
+========================================== */
+
+.about {
+    background: var(--dark);
+    text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.about h2 {
+    margin-bottom: 25px;
+}
+
+.about > p:last-child {
+    max-width: 750px;
+    margin: auto;
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    padding: 65px 20px;
+    text-align: center;
+    background: #050505;
+    border-top: 1px solid rgba(212, 175, 101, 0.2);
+}
+
+footer h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: var(--gray);
+    font-size: 11px;
+    margin: 12px 0;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   CARRITO DE COMPRAS
+========================================== */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: min(450px, 100%);
+    height: 100%;
+    padding: 40px;
+    overflow-y: auto;
+    background: #111111;
+    border-left: 1px solid rgba(212, 175, 101, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+}
+
+.cart-overlay.active .cart-panel {
+    transform: translateX(0);
+}
+
+.cart-panel h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.close-cart {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: none;
+    background: none;
+    color: var(--white);
+    font-size: 30px;
+}
+
+.cart-total {
+    border-top: 1px solid #444444;
+    padding-top: 20px;
+    margin: 30px 0;
+    font-size: 14px;
+}
+
+/* ==========================================
+   ELEMENTOS DEL CARRITO
+========================================== */
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid #333333;
+}
+
+.cart-item-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    margin-bottom: 6px;
+}
+
+.cart-item-info p,
+.cart-item-right p {
+    color: var(--gold);
+    font-size: 12px;
+}
+
+.cart-item-right {
+    text-align: right;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.quantity-button,
+.remove-button {
+    background: transparent;
+    border: 1px solid #555555;
+    color: var(--white);
+    padding: 5px 9px;
+}
+
+.quantity-button:hover,
+.remove-button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.remove-button {
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+/* ==========================================
+   ANIMACIONES
+========================================== */
+
+@keyframes heroEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 4%;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 20px;
+    }
+
+    .about {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+/* ==========================================
+   CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        min-height: 75px;
+        height: auto;
+        padding: 13px 5%;
+        flex-wrap: wrap;
+        gap: 13px;
+    }
+
+    .logo {
+        font-size: 29px;
+        letter-spacing: 4px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .cart-button {
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+
+    .hero {
+        padding-top: 170px;
+        min-height: 90vh;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 11vw, 60px);
+    }
+
+    .hero-content > p:not(.eyebrow) {
+        font-size: 12px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .section {
+        padding: 85px 5%;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2,
+    .about h2 {
+        font-size: 39px;
+    }
+
+    .filters {
+        gap: 8px;
+        margin-bottom: 30px;
+    }
+
+    .filter-button {
+        padding: 10px 14px;
+        font-size: 9px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px 12px;
+    }
+
+    .product-info {
+        padding: 14px 11px;
+    }
+
+    .product-info h3 {
+        font-size: 19px;
+    }
+
+    .product-description {
+        font-size: 10px;
+        line-height: 1.6;
+        min-height: 64px;
+        margin-bottom: 14px;
+    }
+
+    .product-category {
+        font-size: 8px;
+    }
+
+    .product-bottom {
+        gap: 8px;
+        padding-top: 12px;
+    }
+
+    .product-price {
+        font-size: 11px;
+    }
+
+    .add-cart-button {
+        padding: 9px 7px;
+        font-size: 8px;
+    }
+
+    .product-tag {
+        top: 8px;
+        left: 8px;
+        padding: 6px 7px;
+        font-size: 7px;
+    }
+
+    .about {
+        padding: 80px 8%;
+    }
+
+    .about > p:last-child {
+        font-size: 12px;
+    }
+
+    .cart-panel {
+        padding: 30px 22px;
+    }
+}
+
+/* ==========================================
+   CELULARES MUY PEQUEÑOS
+========================================== */
+
+@media (max-width: 360px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-info h3 {
+        font-size: 24px;
+    }
+
+    .product-description {
+        min-height: auto;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+}
