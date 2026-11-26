@@ -1,10 +1,8 @@
 
 /* ==========================================
    VÉLORÉ - LUXURY FASHION BOUTIQUE
-   Diseño responsive para PC y celulares
+   Diseño responsive + animaciones
 ========================================== */
-
-/* VARIABLES */
 
 :root {
     --black: #080808;
@@ -137,10 +135,12 @@ header {
 .cart-button:hover {
     background: var(--gold);
     color: var(--black);
+    transform: translateY(-3px);
 }
 
 /* ==========================================
    PORTADA PRINCIPAL
+   IMAGEN COMPLETA SIN RECORTES
 ========================================== */
 
 .hero {
@@ -152,16 +152,18 @@ header {
     justify-content: center;
     text-align: center;
     position: relative;
+    background-color: #080808;
 
-    background:
+    background-image:
         linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.75)
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.60)
         ),
-        url('https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=2000&q=85');
+        url('../assets/images/8a0584db-df4c-48d1-93c2-fa9cc17c932b.jpg');
 
-    background-size: cover;
-    background-position: center 35%;
+    background-size: auto, contain;
+    background-position: center, center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
@@ -274,6 +276,7 @@ header {
     border-color: var(--gold);
     color: var(--gold);
     background: rgba(212, 175, 101, 0.06);
+    transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -284,7 +287,6 @@ header {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 45px 28px;
@@ -296,13 +298,15 @@ header {
     background: var(--card);
     border: 1px solid rgba(212, 175, 101, 0.12);
     transition:
-        transform 0.4s ease,
-        border-color 0.4s ease;
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-9px);
     border-color: rgba(212, 175, 101, 0.65);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
 .product-image-container {
@@ -318,11 +322,11 @@ header {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.7s ease;
+    transition: transform 0.8s ease;
 }
 
 .product-card:hover .product-image {
-    transform: scale(1.06);
+    transform: scale(1.07);
 }
 
 .product-tag {
@@ -393,6 +397,7 @@ header {
 .add-cart-button:hover {
     background: var(--gold);
     color: var(--black);
+    transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -496,6 +501,12 @@ footer p {
     background: none;
     color: var(--white);
     font-size: 30px;
+    transition: transform 0.3s ease;
+}
+
+.close-cart:hover {
+    transform: rotate(90deg);
+    color: var(--gold);
 }
 
 .cart-total {
@@ -547,12 +558,14 @@ footer p {
     border: 1px solid #555555;
     color: var(--white);
     padding: 5px 9px;
+    transition: var(--transition);
 }
 
 .quantity-button:hover,
 .remove-button:hover {
     border-color: var(--gold);
     color: var(--gold);
+    transform: scale(1.05);
 }
 
 .remove-button {
@@ -574,6 +587,46 @@ footer p {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes revealEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@supports (animation-timeline: view()) {
+
+    .section,
+    .product-card,
+    footer {
+        animation: revealEntrance linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+    }
+}
+
+/* ==========================================
+   TRANSICIONES
+========================================== */
+
+.gold-button,
+.cart-button,
+.filter-button,
+.add-cart-button,
+.logo,
+.nav-links a {
+    transition:
+        color 0.4s ease,
+        background 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s ease;
 }
 
 /* ==========================================
@@ -642,6 +695,7 @@ footer p {
     .hero {
         padding-top: 170px;
         min-height: 90vh;
+        background-position: center, center;
     }
 
     .hero h1 {
@@ -759,5 +813,20 @@ footer p {
     .nav-links {
         gap: 10px;
     }
+}
 
+/* ==========================================
+   ACCESIBILIDAD
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
